@@ -31,6 +31,7 @@ func init() {
 		log.Fatal("error connecting to database", err)
 	}
 
+	// ping database
 	err = mongoClient.Ping(context.Background(), readpref.Primary())
 	if err != nil {
 		log.Fatal("Ping failed", err)
@@ -70,7 +71,10 @@ func main() {
 	log.Println("Running on port 8000")
 }
 
+
 func healthHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
+// of 200 (OK) and a simple text message "Running..." to indicate that the API
+// is up and running.
+
 	w.Write([]byte("Running..."))
 }

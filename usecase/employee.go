@@ -22,13 +22,16 @@ type Response struct {
 }
 
 func (svc *EmployeeService) CreateEmployee(w http.ResponseWriter, r *http.Request) {
+	//set response header
 	w.Header().Set("Content-Type", "application/json")
 
+	// define response
 	var res Response
 	defer json.NewEncoder(w).Encode(&res)	// will run in the end when all function have been executed
 
+	// define employee model to store the request body
 	var emp model.Employee
-	err := json.NewDecoder(r.Body).Decode(&emp)
+	err := json.NewDecoder(r.Body).Decode(&emp) // decode request body and store it in emp model
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		log.Fatal("Error while decoding the request.")
@@ -91,6 +94,8 @@ func (svc *EmployeeService) GetEmployeeById(w http.ResponseWriter, r *http.Reque
 	w.WriteHeader(http.StatusOK)	
 }
 
+
+// GetAllEmployee returns all employees in the database.
 func (svc *EmployeeService) GetAllEmployee(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 

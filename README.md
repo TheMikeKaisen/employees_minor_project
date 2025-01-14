@@ -41,6 +41,10 @@ This repository demonstrates a CRUD (Create, Read, Update, Delete) API implement
 
 ---
 
+## WorkFlow
+    
+![WorkFlow](./image.png)
+
 ## Getting Started
 
 ### Prerequisites
